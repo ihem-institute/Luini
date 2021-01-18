@@ -10,6 +10,7 @@ import org.apache.log4j.Logger;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.engine.schedule.ScheduledMethod;
+import repast.simphony.parameter.Parameters;
 import repast.simphony.space.continuous.ContinuousSpace;
 import repast.simphony.space.grid.Grid;
 
@@ -116,7 +117,10 @@ public class Endosome {
 	public void step() {
 		
 		double p_EndosomeFusionStep =1d/(50d/0.03*Cell.timeScale);//used to be 60d
-		double p_EndosomeSplitStep = 0.01;//1d/(5d/0.03*Cell.timeScale); // use to be 0.4
+//		USE PARAMETERS TO SCREEN VALUES IN BATCH
+		Parameters parm = RunEnvironment.getInstance().getParameters();
+		double p_EndosomeSplitStep =(double) parm.getValue("p_EndosomeSplitStep");
+//		double p_EndosomeSplitStep = 0.01;//1d/(5d/0.03*Cell.timeScale); // use to be 0.4
 		double p_MaturationStep = 1d/(120d/0.03*Cell.timeScale);
 
 		endosomeShape(this);

@@ -124,7 +124,11 @@ public class CellProperties {
 	
 	public static void loadFromCsv(CellProperties cellProperties) throws IOException {
 		System.out.println(1);
-		Scanner scanner = new Scanner(new File("inputIntrTransp3.csv"));
+		
+		Scanner scanner = new Scanner(new File(
+				//		"inputIntrTransp3.csv"));
+				// PARA BATCH MODE.  LEE DE UN FOLDER DATA RELATIVO
+										".//data//inputIntrTransp3.csv"));
 		scanner.useDelimiter(",");
 		
 		freezeDryOption: // this names the WHILE loop, so I can break from the loop when I want.  

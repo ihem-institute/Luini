@@ -39,7 +39,10 @@ public class FreezeDryEndosomes {
 	
 	public static void loadFromCsv(FreezeDryEndosomes frozenEndosomes) throws IOException {
 
-		Scanner scanner = new Scanner(new File("inputFrozenEndosomes.csv"));
+		Scanner scanner = new Scanner(new File(
+//				"inputFrozenEndosomes.csv"));
+//		ESTO ES PARA BATCH.  LEE LOS ENDOSOMAS DE UN FOLDER DATA RELATIVO
+				".//data//inputFrozenEndosomes.csv"));;
 		scanner.useDelimiter(",");
 		while (scanner.hasNextLine()) {
 			String line = scanner.nextLine();
