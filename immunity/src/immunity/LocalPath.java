@@ -31,7 +31,7 @@ import java.util.Date;
 //	      to get the results from the batch in different folders, the directory must be created
 //	      Cannot stores de files in a non existing directory
 	      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
-	      mypathOut="C:/Users/lmayo/workspace-golgi/immunity/output/"+folderName+"/";
+	      mypathOut="C:/Users/lmayo/workspace-golgi/output/"+folderName+"/";
 	      Path path = Paths.get(mypathOut);
 	      Files.createDirectory(path);
 	      

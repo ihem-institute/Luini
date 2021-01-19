@@ -6,10 +6,10 @@
 						converter="repast.simphony.parameter.StringConverterFactory$IntConverter"
 									
 		/>
-				<parameter name="soluble" displayName="Soluble" type="java.lang.String" 
-						defaultValue="dextran" 
+				<parameter name="p_EndosomeSplitStep" displayName="p_EndosomeSplitStep" type="double" 
+						defaultValue="0.01" 
 						isReadOnly="false" 
-						converter="repast.simphony.parameter.StringConverterFactory$StringStringConverter"
+						converter="repast.simphony.parameter.StringConverterFactory$DoubleConverter"
 									
 		/>
 		</parameters>

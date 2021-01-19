@@ -137,7 +137,10 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(ITResultsPath, false));		
+//		output = new BufferedWriter(new FileWriter(ITResultsPath, false));	
+//		for BATCH
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/ResultsIntrTransp3.csv", false));
+
 		output.append(line);
 		output.close();	
 		
@@ -149,7 +152,11 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
+//		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
+//		for Batch
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/ResultsIntrTransp3.csv", true));
+
+		
 		output.append(line);
 		output.close();
 	}
@@ -163,7 +170,9 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
+//		For BATCh
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/TotalRabs.csv", false));
+//		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
 		output.append(line);
 		output.close();	
 		
@@ -175,7 +184,10 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(TotalRabs, true));
+//		output = new BufferedWriter(new FileWriter(TotalRabs, true));
+//		For BATCh
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/TotalRabs.csv", true));
+
 		output.append(line);
 		output.close();
 	}
@@ -192,7 +204,10 @@ public class Results {
 			line = line + "\n";
 			Writer output;
 			//CAMBIO
-			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
+//			For  Batch
+//			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
+			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/cisternsArea.csv", false));
+
 			output.append(line);
 			output.close();	
 			
@@ -204,7 +219,9 @@ public class Results {
 			line = line + "\n";
 			Writer output;
 			//CAMBIO
-			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
+//			For Batch
+			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/cisternsArea.csv", true));
+//			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
 			output.append(line);
 			output.close();
 		}
@@ -404,7 +421,9 @@ public class Results {
 			line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
+//		For Batch
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/MarkerResults.csv", false));
+//		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
 		output.append(line);
 		output.close();	
 		}
@@ -415,7 +434,9 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-		output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
+//		For Batch
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/MarkerResults.csv", true));
+	//	output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
 		output.append(line);
 		output.close();
 	}

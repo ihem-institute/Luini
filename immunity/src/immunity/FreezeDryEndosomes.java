@@ -115,7 +115,9 @@ public class FreezeDryEndosomes {
 		Writer output;	
 	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		String line ="tick " + tick + "\n";
-		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
+//		For Batch
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/frozenEndosomes.csv", true));
+//		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
 		output.append(line);
 		output.close();
 		for (Endosome endosome : collection) {
@@ -128,7 +130,9 @@ public class FreezeDryEndosomes {
             line = line + "xcoor" + "," + endosome.getXcoor() + ",";
             line = line + "ycoor" + "," + endosome.getYcoor() + ",";
 		line = line + "\n";	
-		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
+//		For Batch
+		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/frozenEndosomes.csv", true));
+//		output = new BufferedWriter(new FileWriter(FreezeOutputPath, true));
 		output.append(line);
 		line = "";
         line = line + "endosome"+index + ch + ",";
