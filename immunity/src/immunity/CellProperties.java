@@ -329,5 +329,6 @@ public class CellProperties {
 			}
 		}
 		scanner.close();
+		System.out.println(cellProperties.rabTropism);
 	}
 }

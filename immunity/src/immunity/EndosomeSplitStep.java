@@ -467,9 +467,10 @@ public class EndosomeSplitStep {
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).contains("tub") 
-					|| (content.contains("memLS") && rabInTube.equals("RabC")) // específico para modelo de Luini
-					){
+			else if (rabTropism.get(content).toString().contains("tub") )
+//				if the tropism of the content (any of them) contains the substring "tub"
+	//			|| (content.contains("memLS") && rabInTube.equals("RabC")) // específico para modelo de Luini
+					{				
 				splitToTubule(endosome, content, so, sVesicle);
 			}
 			// if tropism to sphere, the content goes to the vesicle		
@@ -627,10 +628,17 @@ public class EndosomeSplitStep {
 	private static void splitToTubule(Endosome endosome, String content, double so, double sVesicle) {
 		HashMap<String, Double> copyMembrane = new HashMap<String, Double>(
 				endosome.membraneContent);
+		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
+				CellProperties.getInstance().getRabTropism());
+		double	tubuleTrop = 1d;
+		for (String rabTrop : rabTropism.get(content)){
+			if (rabTrop.contains("tub")) {
+//				System.out.println("CONTENT "+ content + rabTrop);
+			tubuleTrop = Double.parseDouble(rabTrop.substring(3,5));
+			}
+		}
 		
-//		HashMap<String, Set<String>> rabTropism = new HashMap<String, Set<String>>(
-//				CellProperties.getInstance().getRabTropism());
-		double concentrate = 50d;
+		double concentrate = tubuleTrop;
 		double scylinder = so - sVesicle;
 		double value = (copyMembrane.get(content)/so)*concentrate*scylinder;
 //		if(copyMembrane.get(content)> scylinder){
