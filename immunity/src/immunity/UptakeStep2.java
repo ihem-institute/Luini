@@ -15,8 +15,8 @@ public class UptakeStep2 {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	private static Object membreneMet;
-	private static HashMap<String, Double> rabContent;
-	public static void uptake(Cell cell) {
+	private static HashMap<String, Double> rabContent; 
+	public static void uptake(Cell cell) { 
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick < 100) return;
 		space = cell.getSpace();

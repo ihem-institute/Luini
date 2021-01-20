@@ -9,7 +9,7 @@ public class InitialOrganelles {
 
 	private static InitialOrganelles instance;
 
-	public static InitialOrganelles getInstance() {
+	public static InitialOrganelles getInstance() { 
 		if (instance == null) {
 			instance = new InitialOrganelles();
 		}

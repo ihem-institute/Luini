@@ -53,6 +53,7 @@ public class Results {
 	
 	static Results	instance = new Results(space, grid, totalRabs, initialTotalRabs);
 	LocalPath mainpath=new LocalPath(); 
+	String myPathOutExcel = mainpath.getPathOutExcel(); 	
 	String ITResultsPath = mainpath.getPathResultsIT(); 	
 	String MarkerResultsPath =mainpath.getPathResultsMarkers();
 	String TotalRabs = mainpath.getPathTotalRabs();
@@ -72,6 +73,7 @@ public class Results {
 // STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
 	@ScheduledMethod(start = 1, interval = 5000)
 	public void stepTable() {
+	//	log();
 		FreezeDryEndosomes.getInstance();
 		try {
 			FreezeDryEndosomes.getInstance().writeToCsv();
@@ -101,7 +103,7 @@ public class Results {
 	        }
 	    }
 
-	    SpreadsheetUtils.saveTablesAsExcel(models, new File("out-"+tick+".xlsx"));
+	    SpreadsheetUtils.saveTablesAsExcel(models, new File(myPathOutExcel + "out-"+tick+".xlsx"));
 	}
 // STORE THE CONTENT DISTRIBUTION IN THE CELL (IN ENDOSOMES/ GOLGI/ CYTO/ RECYCLED)
 	@ScheduledMethod(start = 1, interval = 100)
@@ -137,9 +139,9 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-//		output = new BufferedWriter(new FileWriter(ITResultsPath, false));	
+		output = new BufferedWriter(new FileWriter(ITResultsPath, false));	
 //		for BATCH
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/ResultsIntrTransp3.csv", false));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/ResultsIntrTransp3.csv", false));
 
 		output.append(line);
 		output.close();	
@@ -152,9 +154,9 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-//		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
+		output = new BufferedWriter(new FileWriter(ITResultsPath, true));
 //		for Batch
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/ResultsIntrTransp3.csv", true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/ResultsIntrTransp3.csv", true));
 
 		
 		output.append(line);
@@ -171,8 +173,8 @@ public class Results {
 		Writer output;
 		//CAMBIO
 //		For BATCh
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/TotalRabs.csv", false));
-//		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/TotalRabs.csv", false));
+		output = new BufferedWriter(new FileWriter(TotalRabs, false));		
 		output.append(line);
 		output.close();	
 		
@@ -184,9 +186,9 @@ public class Results {
 		line = line + "\n";
 		Writer output;
 		//CAMBIO
-//		output = new BufferedWriter(new FileWriter(TotalRabs, true));
+		output = new BufferedWriter(new FileWriter(TotalRabs, true));
 //		For BATCh
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/TotalRabs.csv", true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/TotalRabs.csv", true));
 
 		output.append(line);
 		output.close();
@@ -205,8 +207,8 @@ public class Results {
 			Writer output;
 			//CAMBIO
 //			For  Batch
-//			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
-			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/cisternsArea.csv", false));
+			output = new BufferedWriter(new FileWriter(cisternsAreaPath, false));		
+//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/cisternsArea.csv", false));
 
 			output.append(line);
 			output.close();	
@@ -220,8 +222,8 @@ public class Results {
 			Writer output;
 			//CAMBIO
 //			For Batch
-			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/cisternsArea.csv", true));
-//			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
+//			output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/cisternsArea.csv", true));
+			output = new BufferedWriter(new FileWriter(cisternsAreaPath, true));
 			output.append(line);
 			output.close();
 		}
@@ -422,8 +424,8 @@ public class Results {
 		Writer output;
 		//CAMBIO
 //		For Batch
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/MarkerResults.csv", false));
-//		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/MarkerResults.csv", false));
+		output = new BufferedWriter(new FileWriter(MarkerResultsPath, false));
 		output.append(line);
 		output.close();	
 		}
@@ -435,8 +437,8 @@ public class Results {
 		Writer output;
 		//CAMBIO
 //		For Batch
-		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/MarkerResults.csv", true));
-	//	output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/MarkerResults.csv", true));
+		output = new BufferedWriter(new FileWriter(MarkerResultsPath, true));
 		output.append(line);
 		output.close();
 	}

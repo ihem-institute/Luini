@@ -9,6 +9,9 @@ import java.nio.file.Paths;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import repast.simphony.engine.environment.RunEnvironment;
+import repast.simphony.parameter.Parameters;
+
 	public class LocalPath {
 		
 	private String mypath;
@@ -30,10 +33,18 @@ import java.util.Date;
 //	      SAME FOR INPUT, THE FILE MUST BE IN THE "data" FOLDER
 //	      to get the results from the batch in different folders, the directory must be created
 //	      Cannot stores de files in a non existing directory
-	      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
-	      mypathOut="C:/Users/lmayo/workspace-golgi/output/"+folderName+"/";
-	      Path path = Paths.get(mypathOut);
-	      Files.createDirectory(path);
+			if (RunEnvironment.getInstance().isBatch()) {
+			      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
+					Parameters parm = RunEnvironment.getInstance().getParameters();
+					double p_EndosomeSplitStep =(double) parm.getValue("p_EndosomeSplitStep");
+					int repeat = (int) parm.getValue("repeat");
+			      folderName = String.valueOf(p_EndosomeSplitStep) + "-" + String.valueOf(repeat);
+			      mypathOut="C:/Users/lmayo/workspace-golgi/output/"+folderName+"/";
+			      Path path = Paths.get(mypathOut);
+			      Files.createDirectory(path);
+			}
+			else 
+				mypathOut="C:/Users/lmayo/workspace-golgi/output/";
 	      
 	      }
 	    catch(Exception e) {
@@ -46,6 +57,9 @@ import java.util.Date;
 			return this.mypath; 
 			} 
 		
+		public String getPathOutExcel(){ 
+			return this.mypathOut;
+			} 
 		public String getPathResultsIT(){ 
 			
 			mypath1=mypathOut+"/ResultsIntrTransp3.csv";

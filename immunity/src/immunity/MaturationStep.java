@@ -19,7 +19,7 @@ import repast.simphony.util.ContextUtils;
 public class MaturationStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
-	public static void mature(Endosome endosome) {
+	public static void mature(Endosome endosome) { 
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
 		double membraneFlux = CellProperties.getInstance().cellK.get("membraneFlux");

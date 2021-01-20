@@ -1,6 +1,7 @@
 Error while running model
-java.lang.ExceptionInInitializerError
-	at immunity.CellBuilder.build(CellBuilder.java:87)
+java.lang.NullPointerException
+	at immunity.Endosome.<init>(Endosome.java:86)
+	at immunity.CellBuilder.build(CellBuilder.java:174)
 	at repast.simphony.dataLoader.engine.ClassNameContextBuilder.build(ClassNameContextBuilder.java:41)
 	at repast.simphony.dataLoader.engine.DataLoaderControllerAction.runInitialize(DataLoaderControllerAction.java:48)
 	at repast.simphony.engine.controller.DefaultController$2.visit(DefaultController.java:214)
@@ -14,6 +15,3 @@ java.lang.ExceptionInInitializerError
 	at repast.simphony.batch.OneRunBatchRunner.run(OneRunBatchRunner.java:101)
 	at repast.simphony.batch.InstanceRunner.run(InstanceRunner.java:195)
 	at repast.simphony.batch.InstanceRunner.main(InstanceRunner.java:217)
-Caused by: java.lang.NullPointerException
-	at immunity.Cell.<clinit>(Cell.java:22)
-	... 14 more

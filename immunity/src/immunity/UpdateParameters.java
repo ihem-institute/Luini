@@ -18,13 +18,16 @@ public class UpdateParameters {
 	private static UpdateParameters instance;
 	//CAMBIO
 	LocalPath mainpath=new LocalPath(); 
-	String InputPath = mainpath.getPathInputIT();
+//	For BATCH
+//	String InputPath = mainpath.getPathInputIT();
+	String InputPath = ".//data//inputIntrTransp3.csv";
+	
 	
 	public static UpdateParameters getInstance() {
 		if( instance == null ) {
 			instance = new  UpdateParameters();
 		}
-		return instance;
+		return instance; 
 	}
 
 	private String oldFile = "";

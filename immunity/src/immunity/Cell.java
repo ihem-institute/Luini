@@ -11,7 +11,7 @@ public class Cell {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 
-	private static Cell instance;
+	private static Cell instance; 
 	public static Cell getInstance() {
 		if (instance == null) {
 			instance = new Cell(space, grid);
