@@ -189,13 +189,13 @@ public class UptakeStep2 {
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 30001) {
 			double memValue = 8033;
-			membraneContent.put("memL",memValue);
-			membraneContent.put("memLS",memValue);
-			membraneContent.put("memS",memValue);
-			membraneContent.put("memCis",memValue);
-			membraneContent.put("memMedial",memValue);
-			membraneContent.put("memTrans",memValue);
-			membraneContent.put("memTub",memValue);
+			membraneContent.put("mT00",memValue);
+			membraneContent.put("mT.5",memValue);
+			membraneContent.put("mT01",memValue);
+			membraneContent.put("mT10",memValue);
+			membraneContent.put("mCis",memValue);
+			membraneContent.put("mMed",memValue);
+			membraneContent.put("mTra",memValue);
 			double solValue = 196257;
 			solubleContent.put("solL", solValue);
 			solubleContent.put("solS", solValue);
@@ -300,13 +300,13 @@ public class UptakeStep2 {
 		
 		if (tick == 30001) {
 			double memValue = 8033;
-			membraneContent.put("memL",memValue);
-			membraneContent.put("memLS",memValue);
-			membraneContent.put("memS",memValue);
-			membraneContent.put("memCis",memValue);
-			membraneContent.put("memMedial",memValue);
-			membraneContent.put("memTrans",memValue);
-			membraneContent.put("memTub",memValue);
+			membraneContent.put("mT00",memValue);
+			membraneContent.put("mT.5",memValue);
+			membraneContent.put("mT01",memValue);
+			membraneContent.put("mT10",memValue);
+			membraneContent.put("mCis",memValue);
+			membraneContent.put("mMed",memValue);
+			membraneContent.put("mTra",memValue);
 			double solValue = 196257;
 			solubleContent.put("solL", solValue);
 			solubleContent.put("solS", solValue);

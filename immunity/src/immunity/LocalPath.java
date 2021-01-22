@@ -11,6 +11,7 @@ import java.util.Date;
 
 import repast.simphony.engine.environment.RunEnvironment;
 import repast.simphony.parameter.Parameters;
+import repast.simphony.util.collections.IndexedIterable;
 
 	public class LocalPath {
 		
@@ -34,11 +35,14 @@ import repast.simphony.parameter.Parameters;
 //	      to get the results from the batch in different folders, the directory must be created
 //	      Cannot stores de files in a non existing directory
 			if (RunEnvironment.getInstance().isBatch()) {
-			      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
+//		      String folderName = new SimpleDateFormat("yyyy-MM-dd-HH-mmss").format(new Date());
 					Parameters parm = RunEnvironment.getInstance().getParameters();
+//					IndexedIterable<Parameters> setOfParameters =(IndexedIterable<Parameters>) parm;
+//					for (Parameters p : setOfParameters) {
+//					}
 					double p_EndosomeSplitStep =(double) parm.getValue("p_EndosomeSplitStep");
 					int repeat = (int) parm.getValue("repeat");
-			      folderName = String.valueOf(p_EndosomeSplitStep) + "-" + String.valueOf(repeat);
+			      String folderName = String.valueOf(p_EndosomeSplitStep) + "-" + String.valueOf(repeat);
 			      mypathOut="C:/Users/lmayo/workspace-golgi/output/"+folderName+"/";
 			      Path path = Paths.get(mypathOut);
 			      Files.createDirectory(path);
@@ -94,5 +98,9 @@ import repast.simphony.parameter.Parameters;
 			
 			mypath6 = mypathOut+"/cisternsArea.csv";
 			return this.mypath6; 
+		}
+
+		public String getPathAreaContent() {
+			return mypathOut+"/AreaContent.csv";
 		}
 	}

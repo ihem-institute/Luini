@@ -22,6 +22,7 @@ public class FreezeDryEndosomes {
 	//CAMBIO
 	LocalPath mainpath=new LocalPath(); 
 	String FreezeOutputPath = mainpath.getPathOutputFE(); 	
+	String AreaContentPath = mainpath.getPathAreaContent(); 	
 	
 	public static FreezeDryEndosomes getInstance() {
 		if( instance == null ) {
@@ -168,5 +169,63 @@ public class FreezeDryEndosomes {
 		output.close();
 	}
 	}
-	
+	public void AreaContentToCsv() throws IOException {
+		
+		IndexedIterable<Endosome> collection = CellBuilder.getCollection();
+		int index = 0;
+		Writer output;	
+	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+		String line ="tick " + tick + "\n";
+//		For Batch
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/frozenEndosomes.csv", true));
+		output = new BufferedWriter(new FileWriter(AreaContentPath, true));
+		output.append(line);
+//		output.close();
+		for (Endosome endosome : collection) {
+			line = "";
+//			String ch = RandomStringUtils.randomAlphabetic(1);
+//            line = line + "endosome"+index + ch + ",";
+//            line = line + "initOrgProp" + ",";
+            line = line + "area" + "," + endosome.getArea()  + ",";
+//            line = line + "volume" + "," + endosome.getVolume() + ",";
+//            line = line + "xcoor" + "," + endosome.getXcoor() + ",";
+//            line = line + "ycoor" + "," + endosome.getYcoor() + ",";
+//		line = line + "\n";	
+//		For Batch
+//		output = new BufferedWriter(new FileWriter("C:/Users/lmayo/workspace-golgi/output/frozenEndosomes.csv", true));
+//		output = new BufferedWriter(new FileWriter(AreaContentPath, true));
+//		output.append(line);
+//		line = "";
+//        line = line + "endosome"+index + ch + ",";
+//        String rabContent = endosome.getRabContent().toString().replace("=",",");
+//        rabContent = rabContent.replace("{","");
+//        rabContent = rabContent.replace("}","");
+//        rabContent = rabContent.replace(" ","");
+//        line = line + "initRabContent" + "," + rabContent;
+//        line = line + "\n";
+////		Writer output;
+//		output.append(line);		
+
+		String membraneContent = endosome.getMembraneContent().toString().replaceAll("=",","); 
+		membraneContent = membraneContent.replace("{","");
+		membraneContent = membraneContent.replace("}","");
+        membraneContent = membraneContent.replace(" ","");
+        line = line + "," + membraneContent;
+        line = line + "\n";
+		output.append(line);
+//		
+//		line = "";  
+//        line = line + "endosome"+index + ch + ",";        
+//        String solubleContent = endosome.getSolubleContent().toString().replaceAll("=",",");        
+//		solubleContent = solubleContent.replace("{","");
+//		solubleContent = solubleContent.replace("}","");
+//        solubleContent = solubleContent.replace(" ","");
+//        line = line + "initSolubleContent" + "," + solubleContent;
+//        line = line + "\n";
+//		output.append(line);
+		index = index + 1;
+
+	}
+		output.close();
+	}
 }

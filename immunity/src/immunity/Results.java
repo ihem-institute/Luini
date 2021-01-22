@@ -77,6 +77,7 @@ public class Results {
 		FreezeDryEndosomes.getInstance();
 		try {
 			FreezeDryEndosomes.getInstance().writeToCsv();
+			FreezeDryEndosomes.getInstance().AreaContentToCsv();;
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -248,6 +249,8 @@ public class Results {
 			}
 			for (Endosome end : allEndosomes) {
 				for (String mem : end.membraneContent.keySet()) {
+//					System.out.println("mem "+mem);
+//					System.out.println("mem "+end.membraneContent.get(mem));
 					double value = initialTotalMembraneCargo.get(mem) + end.membraneContent.get(mem);
 					initialTotalMembraneCargo.put(mem, value);
 				}
@@ -323,6 +326,7 @@ public class Results {
 					contentDist.put(sol + rab, value);
 				}
 			for (String mem : membraneContent.keySet()) {
+//				System.out.println(mem);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
 							/ area/initialTotalMembraneCargo.get(mem);

@@ -392,13 +392,13 @@ switched to Kind4(Rab7).  I guess is that the rate will have to be relative.  1 
 		int tick = (int) RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
 		if (tick == 30000) {
 			double memValue = 8033;
-			membraneContent.put("memL",memValue);
-			membraneContent.put("memLS",memValue);
-			membraneContent.put("memS",memValue);
-			membraneContent.put("memCis",memValue);
-			membraneContent.put("memMedial",memValue);
-			membraneContent.put("memTrans",memValue);
-			membraneContent.put("memTub",memValue);
+			membraneContent.put("mT00",memValue);
+			membraneContent.put("mT.5",memValue);
+			membraneContent.put("mT01",memValue);
+			membraneContent.put("mT10",memValue);
+			membraneContent.put("mCis",memValue);
+			membraneContent.put("mMed",memValue);
+			membraneContent.put("mTra",memValue);
 //			"memS",8033, "memERGIC",8033,"memGolgiMedial",8033,"memTGN",8033, "membraneMarker",1,"memTub",8033,"memLS",8033);
 //			endosome164u,initSolubleContent,solL,196257,solS,196257,solubleMarker,1,proton,1000
 			double solValue = 196257;

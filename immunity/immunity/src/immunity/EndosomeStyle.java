@@ -12,7 +12,8 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.media.opengl.GL2;
+//import javax.media.opengl.GL2;
+import com.jogamp.opengl.glu.gl2.*;
 
 import org.apache.commons.math3.geometry.euclidean.twod.Line;
 
