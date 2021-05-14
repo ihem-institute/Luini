@@ -1,1 +1,1 @@
-<?xml version="1.0" ?><sweep runs="1"><parameter name="p_EndosomeSplitStep" type="list" value_type="double" values="0.01 0.03 0.09"><parameter name="repeat" type="number" number_type="int" start="1" end="2" step="1"></parameter></parameter></sweep>
+<?xml version="1.0" ?><sweep runs="1"><parameter name="p_EndosomeSplitStep" type="list" value_type="double" values="0.001 0.003 0.01 0.03"><parameter name="repeat" type="number" number_type="int" start="1" end="2" step="2"></parameter></parameter></sweep>

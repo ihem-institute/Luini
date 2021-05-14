@@ -23,17 +23,22 @@ public class EndosomeSplitStep {
 	private static ContinuousSpace<Object> space;
 	private static Grid<Object> grid;
 	static double cellLimit = 3 * Cell.orgScale;
-	public static HashMap<String, Integer> nroVesicles = new HashMap<String, Integer>();
+	public static HashMap<String, Integer> nroVesicles = CellProperties.getInstance().getNroVesicles();
+	public int totalVesicles = 0;
 //nroVesicles.     ("RabA",0);//nroVesicles.put("RabB",0);nroVesicles.put("RabC",0);nroVesicles.put("RabD",0);nroVesicles.put("RabE",0);
 
 	
+	public int getTotalVesicles() {
+		int totalVesicles = 0;
+		for (String key: nroVesicles.keySet()) {
+			totalVesicles = totalVesicles + nroVesicles.get(key);
+		}
+		return totalVesicles;
+	}
+
 	public static void split(Endosome endosome) {	
 		space = endosome.getSpace();
 		grid = endosome.getGrid();
-
-
-
-		
 		String rabInTube = null;
 		double vo = endosome.volume;
 		double so = endosome.area;
@@ -114,7 +119,8 @@ public class EndosomeSplitStep {
 				}
 				
 				nroVesicles.put(rabInTube, value);
-				//System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
+
+	//			System.out.println("NUMERO DE VESÍCULAS POR RAB "+ nroVesicles);
 
 			}
 
@@ -252,9 +258,10 @@ public class EndosomeSplitStep {
 				* (endosome.size+ b.size)* Cell.orgScale/15;
 		
 		NdPoint myPoint = space.getLocation(endosome);
-		double x = myPoint.getX()+ deltax;
-
+		double x = myPoint.getX()+ deltax;;
+//		double x = myPoint.getX() - endosome.a/6 + Math.random()*endosome.a/3;
 		double y = myPoint.getY()+ deltay;
+//		double y = myPoint.getY()+ - endosome.c/4 + Math.random()*endosome.c/2;
 		if (y < cellLimit){
 			y= cellLimit+Math.random()*cellLimit;
 //			specific for Golgi transport.  To increase TGN volume, when split a pure TGN (RabE) tubule, near the nucleus, increase the volume in a random
@@ -467,9 +474,9 @@ public class EndosomeSplitStep {
 				splitPropSurface(endosome, content, so, sVesicle, propSurf);	
 			}
 			// if tropism to tubule, the content goes to tubule			
-			else if (rabTropism.get(content).toString().contains("tub") )
+			else if (rabTropism.get(content).toString().contains("tub") 
 //				if the tropism of the content (any of them) contains the substring "tub"
-	//			|| (content.contains("memLS") && rabInTube.equals("RabC")) // específico para modelo de Luini
+				|| (content.contains("mCis") && rabInTube.equals("RabB"))) // específico para modelo de Luini
 					{				
 				splitToTubule(endosome, content, so, sVesicle);
 			}
@@ -633,8 +640,12 @@ public class EndosomeSplitStep {
 		double	tubuleTrop = 1d;
 		for (String rabTrop : rabTropism.get(content)){
 			if (rabTrop.contains("tub")) {
-//				System.out.println("CONTENT "+ content + rabTrop);
+//			System.out.println("CONTENT "+ content + rabTrop);
 			tubuleTrop = Double.parseDouble(rabTrop.substring(3,5));
+			}
+			else if (rabTrop.contains("Rab")) {
+				System.out.println("CONTENT "+ content + rabTrop);
+			tubuleTrop = Double.parseDouble(rabTrop.substring(4,6));
 			}
 		}
 		

@@ -71,8 +71,10 @@ public class Results {
 	}
 
 // STORE ALL AGENTS OF THE SIMULATION EVERY 5000 TICKS AS AN EXCEL FILE
-	@ScheduledMethod(start = 1, interval = 5000)
+	@ScheduledMethod(start = 1, interval = 2000)
 	public void stepTable() {
+	    double tick = RunEnvironment.getInstance().getCurrentSchedule().getTickCount();
+	    if (tick <30000) return;
 	//	log();
 		FreezeDryEndosomes.getInstance();
 		try {
@@ -271,7 +273,7 @@ public class Results {
 			contentDist.put(sol, value);
 		}
 		for (String mem : membraneRecycle.keySet()) {
-			double value = membraneRecycle.get(mem)/initialTotalMembraneCargo.get(mem);
+			double value = membraneRecycle.get(mem)/8033;//initialTotalMembraneCargo.get(mem);
 			contentDist.put(mem , value);
 		}			
 		for (String sol : solubleCell.keySet()) {
@@ -329,7 +331,7 @@ public class Results {
 //				System.out.println(mem);
 					double value = contentDist.get(mem + rab)
 							+ membraneContent.get(mem) * rabContent.get(rab)
-							/ area/initialTotalMembraneCargo.get(mem);
+							/ area/8033;//initialTotalMembraneCargo.get(mem);
 					contentDist.put(mem + rab, value);
 				}
 
@@ -390,6 +392,8 @@ public class Results {
 		cisternsArea.put("#cisterns#", cisternsNumber);
 		cisternsArea.put("#vesicles#", endosomeNumber - cisternsNumber);
 		
+		Double value = (double) CellProperties.getInstance().getTotalVesicles();
+		cisternsArea.put("#vesiclesTotal#", value);
 		if (tick == 1) initialTotalRabs.putAll(totalRabs);
 	}
 // Send information about the endosome that contains a membrane or a soluble MARKER

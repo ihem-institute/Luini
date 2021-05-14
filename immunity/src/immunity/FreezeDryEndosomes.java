@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.commons.lang3.RandomStringUtils;
@@ -187,6 +189,10 @@ public class FreezeDryEndosomes {
 //            line = line + "endosome"+index + ch + ",";
 //            line = line + "initOrgProp" + ",";
             line = line + "area" + "," + endosome.getArea()  + ",";
+            String maxRab = Collections.max(endosome.rabContent.entrySet(), Map.Entry.comparingByValue()).getKey();
+            double maxRabValue = endosome.rabContent.get(maxRab);
+            line = line + maxRab + "," + maxRabValue  + ",";
+            
 //            line = line + "volume" + "," + endosome.getVolume() + ",";
 //            line = line + "xcoor" + "," + endosome.getXcoor() + ",";
 //            line = line + "ycoor" + "," + endosome.getYcoor() + ",";

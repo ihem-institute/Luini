@@ -48,6 +48,8 @@ public class CellProperties {
 	public HashMap<String, String> copasiFiles = new HashMap<String, String>();
 	public HashMap<String, Double> uptakeRate = new HashMap<String, Double>();
 	public static HashMap<String, String> rabOrganelle = new HashMap<String, String>();
+	
+	public HashMap<String, Integer> nroVesicles = new HashMap<String, Integer>();
 
 	public Set<String> solubleMet = new HashSet<String>();
 	public Set<String> membraneMet = new HashSet<String>();
@@ -59,6 +61,18 @@ public class CellProperties {
 	public HashMap<String, Double> getCellAgentProperties() {
 		return cellAgentProperties;
 	}
+	public HashMap<String, Integer> getNroVesicles() {
+		return nroVesicles;
+	}	
+	public int getTotalVesicles() {
+		int totalVesicles = 0;
+		for (String key : nroVesicles.keySet()) {
+			totalVesicles = totalVesicles + nroVesicles.get(key);
+		}
+		return totalVesicles;
+	}
+	
+	
 	public HashMap<String, Double> getPlasmaMembraneProperties() {
 		return plasmaMembraneProperties;
 	}
